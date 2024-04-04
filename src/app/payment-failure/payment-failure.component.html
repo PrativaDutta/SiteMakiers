@@ -1,0 +1,88 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+      <div class="payment mb-5">
+        <div class="payment_header">
+          <div class="check"><i class="fa fa-times" aria-hidden="true"></i></div>
+        </div>
+        <h1>Sorry! your payment failed!</h1>
+        <div class="content" *ngIf="paymentStatus == 0">
+          <h1>Sorry! your payment failed!</h1>
+          <div class="ml-5">
+            <p class="text-left"><strong>Transaction ID:</strong> {{txn_id}} </p>
+            <!-- <p class="text-left"><strong>Order ID:</strong> {{order_id}} </p> -->
+            <p class="text-left"><strong>Service:</strong>{{product_info}}</p>
+            <p class="text-left text-danger"><strong>Error Message:</strong> {{error_message}}</p>
+            <div class="row">
+              <div class="col-md-12">
+                <a mat-raised-button routerLink="/" class="mb-3">Go to Home</a>
+              </div>
+              <!-- <div class="col-md-6">
+                <button mat-raised-button color="primary" (click)="paymentRetry()">Retry Payment</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="content"  *ngIf="paymentStatus == 1" >
+          <p class="mt-3 text-danger"><strong>Oops, something went wrong! Url has been tampered.</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="paymentLoader" *ngIf="PAYMENT_GATEWAY == 'hdfc'">
+      <img src="../../assets/images/loading.png" alt="payment">
+      <p>Please wait while we are processing your payment</p>
+    </div>
+    <div class="paymentLoader" *ngIf="PAYMENT_GATEWAY == 'paytm'">
+      <img src="../../assets/images/loading.png" alt="payment" class="mb-3">
+      <p>Please wait while we are processing your payment</p>
+    </div>
+    <div *ngIf="PAYMENT_GATEWAY == 'paytm'">
+      <div *ngIf="checkOutStatus == 1">
+        <form id="paytmnow" ngNoForm [action]="PayTmUrl" name="f1" method="POST">
+          <input type="hidden" name="MID" [value]="MID" />
+          <input type="hidden" name="ORDER_ID" [value]="ORDER_ID" />
+          <input type="hidden" name="CUST_ID" [value]="CUST_ID" />
+          <input type="hidden" name="INDUSTRY_TYPE_ID" [value]="INDUSTRY_TYPE_ID" />
+          <input type="hidden" name="CHANNEL_ID" [value]="CHANNEL_ID" />
+          <input type="hidden" name="TXN_AMOUNT" [value]="TXN_AMOUNT" />
+          <input type="hidden" name="WEBSITE" [value]="WEBSITE" />
+          <input type="hidden" name="CALLBACK_URL" [value]="CALLBACK_URL" />
+          <input type="hidden" name="MSISDN" [value]="MSISDN" />
+          <input type="hidden" name="EMAIL" [value]="EMAIL" />
+          <input type="hidden" name="VERIFIED_BY" [value]="VERIFIED_BY" />
+          <input type="hidden" name="IS_USER_VERIFIED" [value]="IS_USER_VERIFIED" />
+          <input type="hidden" name="CHECKSUMHASH" [value]="CHECKSUMHASH" />
+        </form>
+      </div>
+    </div>
+    <div *ngIf="PAYMENT_GATEWAY == 'hdfc'">
+      <div *ngIf="checkOutStatus == 1">
+        <form id="paynow" ngNoForm [action]="payUurl" name="payuform" method="POST">
+          <input type="hidden" name="key" [value]="payu_key" />
+          <input type="hidden" name="txnid" [value]="payu_txnid" />
+          <input type="hidden" name="amount" [value]="payu_amount" />
+          <input type="hidden" name="productinfo" [value]="payu_productinfo" />
+          <input type="hidden" name="firstname" [value]="payu_firstname" />
+          <input type="hidden" name="email" [value]="payu_email" />
+          <input type="hidden" name="phone" [value]="payu_phone" />
+          <input type="hidden" name="lastname" [value]="payu_lastname" />
+          <input type="hidden" name="address1" [value]="payu_address1" />
+          <!-- <input type="hidden" name="address2" [value]="payu_address2" /> -->
+          <input type="hidden" name="city" [value]="payu_city" />
+          <input type="hidden" name="state" [value]="payu_state" />
+          <input type="hidden" name="country" [value]="payu_country" />
+          <input type="hidden" name="zipcode" [value]="payu_zipcode" />
+          <input type="hidden" name="udf1" [value]="payu_udf1" />
+          <input type="hidden" name="udf2" [value]="payu_udf2" />
+          <input type="hidden" name="udf3" [value]="payu_udf3" />
+          <input type="hidden" name="udf4" [value]="payu_udf4" />
+
+          <input type="hidden" name="surl" [value]="payu_surl" />
+          <input type="hidden" name="furl" [value]="payu_furl" />
+          <input type="hidden" name="curl" [value]="payu_curl" />
+          <input type="hidden" name="hash" [value]="payu_hash" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

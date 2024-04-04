@@ -1,0 +1,358 @@
+<div class="u-s-p-y-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <div class="shop-w-master">
+                    <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
+
+                        <span>FILTERS</span></h1>
+                    <div class="shop-w-master__sidebar">
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">CATEGORY</h1>
+
+                                    <span class="custom-span" (click)="toggleCategoryCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isCategoryDivVisible, 'fas fa-plus': !isCategoryDivVisible}" class="shop-w__toggle"></i>
+                                    </span>
+                                </div>
+                                <div class="shop-w__wrap collapse show" id="s-category">
+                                    <ul *ngIf="isCategoryDivVisible" class="shop-w__category-list gl-scroll">
+                                        <li class="has-list" *ngFor="let category of categorydata">
+                                            <a href="#">{{category.category_name}}</a>
+                                           
+                                            <ul *ngIf="isSubCategoryDivVisible" style="display:block">
+                                                <li class="has-list" *ngFor="let subcategory of category.subcategories">
+                                                    <a href="#">{{subcategory.category_name}}</a>
+                                                    
+                                                    <ul *ngIf="isSubSubCategoryDiv">
+                                                        <li *ngFor="let subsubcategory of subcategory.subcategories">
+                                                            <a href="#">{{subsubcategory.category_name}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">RATING</h1>
+
+                                    <span class="fas fa-minus shop-w__toggle" data-target="#s-rating" data-toggle="collapse"></span>
+                                </div>
+                                <div class="shop-w__wrap collapse show" id="s-rating">
+                                    <ul class="shop-w__list gl-scroll">
+                                        <li>
+                                            <div class="rating__check">
+
+                                                <input type="checkbox">
+                                                <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                            </div>
+
+                                            <span class="shop-w__total-text">(2)</span>
+                                        </li>
+                                        <li>
+                                            <div class="rating__check">
+
+                                                <input type="checkbox">
+                                                <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+
+                                                    <span>& Up</span></div>
+                                            </div>
+
+                                            <span class="shop-w__total-text">(8)</span>
+                                        </li>
+                                        <li>
+                                            <div class="rating__check">
+
+                                                <input type="checkbox">
+                                                <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                    <span>& Up</span></div>
+                                            </div>
+
+                                            <span class="shop-w__total-text">(10)</span>
+                                        </li>
+                                        <li>
+                                            <div class="rating__check">
+
+                                                <input type="checkbox">
+                                                <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                    <span>& Up</span></div>
+                                            </div>
+
+                                            <span class="shop-w__total-text">(12)</span>
+                                        </li>
+                                        <li>
+                                            <div class="rating__check">
+
+                                                <input type="checkbox">
+                                                <div class="rating__check-star-wrap"><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+
+                                                    <span>& Up</span></div>
+                                            </div>
+
+                                            <span class="shop-w__total-text">(1)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">SIZE</h1>
+
+                                    <span class="custom-span" (click)="toggleSizeCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isSizeDivVisible, 'fas fa-plus': !isSizeDivVisible}" class="shop-w__toggle"></i>
+                                      </span>
+                                </div>
+                                <div *ngIf="isSizeDivVisible" class="shop-w__wrap collapse show" id="s-size" >
+                                    <ul class="shop-w__list gl-scroll">
+                                        <li *ngFor="let size of sizeDetails; let i = index">
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+                                                <!-- <input type="checkbox" #sizeCheckbox (change)="onFilterChange('size',sizeCheckbox.checked,size)"> -->
+                                                <input type="checkbox" [id]="size" [value]="size"  (input)="onchangeFilterSize($event,i)">
+                                                <div class="check-box__state check-box__state--primary">
+                                                    <label class="check-box__label" [for]="size">{{size}}</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">BRAND</h1>
+
+                                    <span class="custom-span" (click)="toggleBrandCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isBrandDivVisible, 'fas fa-plus': !isBrandDivVisible}" class="shop-w__toggle"></i>
+                                      </span>
+                                </div>
+                                <div *ngIf="isBrandDivVisible" class="shop-w__wrap collapse show" id="s-brand">
+                                    <ul class="shop-w__list gl-scroll">
+                                        <li  *ngFor="let brandItem of brand ;let i = index">
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+                                                <input type="checkbox" [id]="brandItem.id" [value]="brandItem.name"  (input)="onchangeFilterBrand($event,brandItem.id,i)">
+                                                <div class="check-box__state check-box__state--primary">
+                                                    <label class="check-box__label" [for]="brandItem">{{brandItem.name}}</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                       </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">PRICE</h1>
+
+                                    <span class="fas fa-minus shop-w__toggle" data-target="#s-price" data-toggle="collapse"></span>
+                                </div>
+                                <div class="shop-w__wrap collapse show" id="s-price">
+                                    <form class="shop-w__form-p">
+                                        <div class="shop-w__form-p-wrap">
+                                            <div>
+
+                                                <label for="price-min"></label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="price-min" placeholder="Min" name="price_min"></div>
+                                            <div>
+
+                                                <label for="price-max"></label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="price-max" placeholder="Max" name="price_max"></div>
+                                            <div>
+
+                                                <button class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2" type="submit"></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">COLOR</h1>
+
+                                    <!-- <span class="fas fa-minus shop-w__toggle" data-target="#s-color" data-toggle="collapse"></span> -->
+                                    <span class="custom-span" (click)="toggleColorCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isColorDivVisible, 'fas fa-plus': !isColorDivVisible}" class="shop-w__toggle"></i>
+                                    </span>
+                                </div>
+                                <div *ngIf="isColorDivVisible" class="shop-w__wrap collapse show" id="s-color">
+                                    <ul class="shop-w__list gl-scroll">
+                                        <li *ngFor="let color of colorDetails ;let i = index">
+                                            <div class="color__check">
+
+                                                <input type="checkbox" [id]="color" [value]="color" (input)="onchangeFilterColor($event,i)">
+
+                                                <label class="color__check-label" [for]="color" [style.background-color]="color" title="Red"></label>
+                                            </div>{{color}}
+
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">FABRIC</h1>
+
+                                    <span class="custom-span" (click)="toggleFabricCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isFabricDivVisible, 'fas fa-plus': !isFabricDivVisible}" class="shop-w__toggle"></i>
+                                      </span>
+                                </div>
+                                <div *ngIf="isFabricDivVisible"  class="shop-w__wrap collapse" id="s-fabric">
+                                    <ul class="shop-w__list gl-scroll">
+                                        <li *ngFor="let fabric of fabricDetails; let i = index">
+
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+
+                                                <input type="checkbox" [id]="fabric" [value]="fabric"  (input)="onchangeFilterFabric($event,i)">
+                                               
+
+                                                <div class="check-box__state check-box__state--primary">
+
+                                                    <label class="check-box__label" [for]="fabric">{{fabric}}</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="u-s-m-b-30">
+                            <div class="shop-w shop-w--style">
+                                <div class="shop-w__intro-wrap">
+                                    <h1 class="shop-w__h">FIT</h1>
+
+                                    <span class="custom-span" (click)="toggleFitCollapse()">
+                                        <i [ngClass]="{'fas fa-minus': isFitDivVisible, 'fas fa-plus': !isFitDivVisible}" class="shop-w__toggle"></i>
+                                      </span>
+                                </div>
+                                <div *ngIf="isFitDivVisible" class="shop-w__wrap collapse" id="s-fabric">
+                                    <ul class="shop-w__list gl-scroll"  >
+                                        <li *ngFor="let fit of fitDetails ;let i = index" >
+
+                                            <!--====== Check Box ======-->
+                                            <div class="check-box">
+
+                                                <input type="checkbox" [id]="fit" [value]="fit"  (input)="onchangeFilterFit($event,i)">
+                                               
+
+                                                <div class="check-box__state check-box__state--primary">
+
+                                                    <label class="check-box__label" [for]="fit">{{fit}}</label>
+                                                </div>
+                                            </div>
+                                            <!--====== End - Check Box ======-->
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="shop-p">
+                    <div class="shop-p__toolbar u-s-m-b-30">
+                        <div class="shop-p__meta-wrap u-s-m-b-60">
+
+                            <span class="shop-p__meta-text-1">FOUND 12 RESULTS</span>
+                            <div class="shop-p__meta-text-2">
+
+                                <a class="gl-tag btn--e-brand-shadow" href="#">T-Shirts</a>
+
+                            </div>
+                        </div>
+                        <div class="shop-p__tool-style">
+                            <div class="tool-style__group u-s-m-b-8">
+
+                                <span class="js-shop-grid-target"  (click)="GridView()" [class.is-active]="isGridView">Grid</span>
+
+                                <span class="js-shop-list-target" (click)="ListView()" [class.is-active]="!isGridView">List</span></div>
+                            
+                        </div>
+                    </div>
+                    <div class="shop-p__collection">
+                        <div class="row" [ngClass]="{ 'is-grid-active':isGridView,'is-list-active':islistView}" *ngFor="let product of singleProdData" >
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product-m">
+                                    <div class="product-m__thumb">
+                                        <a class="aspect aspect--bg-grey aspect--square u-d-block" href="#" [routerLink]="['/productdetails',product.id]">
+                                            <img *ngIf="product.images" [src]="product.images.small" alt="">
+                                            <img *ngIf="!product.images || product.images.length === 0" src="../../assets/images/product/sitemakers-tshirt.png" alt="Default Image">
+                                        </a>
+                                        <div class="product-m__quick-look">
+                                            <a class="fas fa-search" data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
+                                        <div class="product-m__add-cart">
+                                            <a class="btn--e-brand" data-modal="modal" data-modal-id="#add-to-cart" [routerLink]="['/productdetails',product.id]">View Details</a></div>
+                                    </div>
+                                    <div class="product-m__content">
+                                        <div class="product-m__category">
+                                            <a href="shop-side-version-2.html">{{product.brand.brand_name}}</a></div>
+                                        <div class="product-m__name">
+                                            <a href="product-detail.html">{{product.product_name}}</a></div>
+                                        <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+                                            <span class="product-m__review">(25)</span></div>
+                                        <div class="product-m__price">{{product.product_price}}</div>
+                                        <div class="product-m__hover">
+                                            <div class="product-m__preview-description">
+
+                                                <span>{{product.description}}</span></div>
+                                            <div class="product-m__wishlist">
+
+                                                <a class="far fa-heart" href="javascript:void(0)" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"  (click)="addToWishlist(product)"></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="u-s-p-y-60">
+
+                        <!--====== Pagination ======-->
+                        <ul class="shop-p__pagination">
+                            <li class="is-active">
+
+                                <a href="shop-side-version-2.html">1</a></li>
+                            <li>
+
+                                <a href="shop-side-version-2.html">2</a></li>
+                            <li>
+
+                                <a href="shop-side-version-2.html">3</a></li>
+                            <li>
+
+                                <a href="shop-side-version-2.html">4</a></li>
+                            <li>
+
+                                <a class="fas fa-angle-right" href="shop-side-version-2.html"></a></li>
+                        </ul>
+                        <!--====== End - Pagination ======-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

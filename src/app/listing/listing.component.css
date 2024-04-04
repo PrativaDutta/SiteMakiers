@@ -1,0 +1,16 @@
+.collapse:not(.show) {
+    display: block;
+}
+.shop-w__intro-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .custom-span {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  
+ 
+  

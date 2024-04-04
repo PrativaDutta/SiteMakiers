@@ -1,0 +1,25 @@
+
+<!-- <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-grey"> -->
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of slides">
+      <ng-template carouselSlide [id]="'slide-' + slide.id">
+        <ng-container *ngIf="slide.image">
+          <div  class="containers">
+            <div class="row">
+              <div class="col-12">
+                <img [src]="slide.image" class="banner-image" alt="{{ slide.alt }}">
+                <div class="slider-content slider-content--animation">
+                  <span class="content-span-2 u-c-secondary discount-on-image">{{ slide.discount }}</span>
+                  <a class="shop-now-link btn--e-brand" [href]="slide.link">SHOP NOW</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+  
+<!-- </div> -->
+
+

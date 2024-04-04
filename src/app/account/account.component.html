@@ -1,0 +1,156 @@
+<div class="app-content">
+
+    <!--====== Section 1 ======-->
+    <div class="u-s-p-y-10">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="container">
+                <div class="breadcrumb">
+                    <div class="breadcrumb__wrap">
+                        <ul class="breadcrumb__list">
+                            <li class="has-separator">
+
+                                <a href="index.html">Home</a></li>
+                            <li class="is-marked">
+
+                                <a href="dash-address-add.html">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--====== End - Section 1 ======-->
+
+
+    <!--====== Section 2 ======-->
+    <div class="u-s-p-b-60">
+
+        <!--====== Section Content ======-->
+        <div class="section__content">
+            <div class="dash">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-12">
+
+                            <!--====== Dashboard Features ======-->
+                            <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                <div class="dash__pad-1">
+
+                                    <span class="dash__text u-s-m-b-16">Hello, Amit Gupta</span>
+                                    <ul class="dash__f-list">
+                                        <li><a href="javascript:void(0)">My Billing/Contact Address</a></li>
+                                        <li><a href="javascript:void(0)">My Orders</a></li>
+                                        <li><a href="javascript:void(0)" routerLink="/wishlist">My Wish List</a></li>
+                                        <li><a href="javascript:void(0)" routerLink="/updatepassword">Update Password</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!--====== End - Dashboard Features ======-->
+                        </div>
+                        <div class="col-lg-9 col-md-12">
+                            <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white">
+                                <div class="dash__pad-2">
+                                    <h1 class="dash__h1 u-s-m-b-14">My Billing/Contact Address</h1>
+
+                                    <span class="dash__text u-s-m-b-30">Please add your Billing/Contact details.</span>
+                                    <form class="dash-address-manipulation" [formGroup]="addressForm">
+                                        <div class="gl-inline">
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-name">FirstName *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-name" placeholder="FirstName" formControlName="fname">
+                                                <p *ngIf="addressForm.controls['fname'].hasError('required') && addressForm.controls['fname'].touched">enter your name</p>
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-name">LastName *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-name" placeholder="LastName" formControlName="lname">
+                                                <p *ngIf="addressForm.controls['lname'].hasError('required') && addressForm.controls['lname'].touched">enter your name</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="gl-inline">
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-city">CITY *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-city" placeholder="CITY" formControlName="city">
+                                                <p *ngIf="addressForm.controls['city'].hasError('required') && addressForm.controls['city'].touched">enter your city</p>
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-state">STATE *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-state" placeholder="STATE" formControlName="state">
+                                                <p *ngIf="addressForm.controls['state'].hasError('required') && addressForm.controls['state'].touched">enter your state</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="gl-inline">
+                                            <div class="u-s-m-b-30">
+
+                                                <!--====== Select Box ======-->
+
+                                                <label class="gl-label" for="billing-country">COUNTRY *</label><select class="select-box select-box--primary-style" id="billing-country" formControlName="country">
+                                                    <option selected value="">Choose Country</option>
+                                                    <option value="india">India</option>
+                                                    <option value="uae">United Arab Emirate (UAE)</option>
+                                                    <option value="uk">United Kingdom (UK)</option>
+                                                    <option value="us">United States (US)</option>
+                                                </select>
+                                                <p *ngIf="addressForm.controls['country'].hasError('required') && addressForm.controls['country'].touched">enter your country</p>
+
+                                                <!--====== End - Select Box ======-->
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-pincode">PINCODE *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-pincode" placeholder="PINCODE" formControlName="pincode">
+                                                <p *ngIf="addressForm.controls['pincode'].hasError('required') && addressForm.controls['pincode'].touched">enter your pincode</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="gl-inline">
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-mobile">MOBILE *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-mobile" placeholder="MOBILE" formControlName="mobile">
+                                                <p *ngIf="addressForm.controls['mobile'].hasError('required') && addressForm.controls['mobile'].touched">enter your mobile</p>
+
+                                            </div>
+                                            <div class="u-s-m-b-30">
+
+                                                <label class="gl-label" for="billing-address">ADDRESS *</label>
+
+                                                <input class="input-text input-text--primary-style" type="text" id="billing-address" placeholder="ADDRESS" formControlName="address">
+                                                <p *ngIf="addressForm.controls['address'].hasError('required') && addressForm.controls['address'].touched">enter your address</p>
+
+                                            </div>
+                                        
+                                        </div>
+                                        <div class="u-s-m-b-30">
+                                            <input type="checkbox" value="yes" name="defaultbilladdr" id="defaultbilladdr" (click)="editaddress($event)">
+                                            <label for="defaultbilladdr">Yes,Default billing address</label>
+                                        </div>
+
+                                        <button class="btn btn--e-brand-b-2" type="submit" (click)="save()">SAVE</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--====== End - Section Content ======-->
+    </div>
+    <!--====== End - Section 2 ======-->
+</div>
